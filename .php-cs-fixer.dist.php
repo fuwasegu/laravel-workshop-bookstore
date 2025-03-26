@@ -38,5 +38,27 @@ return $config
         // セミコロンを置く場所
         // メソッドチェインしたときは最後の呼び出し行に置き，改行しない
         'multiline_whitespace_before_semicolons' => ['strategy' => 'no_multi_line'],
+
+        // doc の annotation のソート
+        'phpdoc_order' => [
+            'order' => [
+                // method
+                'param', 'return', 'throws',
+                // class
+                'property',
+                'method',
+                'mixin'
+            ],
+        ],
+
+        // グローバルにあるものを use させて使う
+        // - クラス → use させる
+        // - 定数 → use させない
+        // - 関数 → use させない
+        'global_namespace_import' => [
+            'import_classes' => true,
+            'import_constants' => false,
+            'import_functions' => false,
+        ],
     ])
     ->setFinder($finder);

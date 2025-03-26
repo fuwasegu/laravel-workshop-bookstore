@@ -13,25 +13,6 @@ use Illuminate\Validation\ValidationException;
 class BookController
 {
     /**
-     * @throws ValidationException
-     */
-    public function create(Request $request): Book
-    {
-        // バリデーション
-        $validator = Validator::make($request->all(), [
-            'title' => ['required', 'string'],
-            'isbn' => ['required', 'string'],
-        ]);
-        $validator->validate();
-
-        // モデルを作成
-        $book = new Book($validator->validated());
-        $book->save();
-
-        return $book;
-    }
-
-    /**
      * @return Collection<int, Book>
      */
     public function index(): Collection

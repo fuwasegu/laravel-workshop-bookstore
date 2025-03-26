@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Database\Factories;
 
 use App\Models\Book;
+use Brick\DateTime\LocalDate;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,6 +23,9 @@ class BookFactory extends Factory
         return [
             'title' => $this->faker->title(),
             'isbn' => $this->faker->isbn13(),
+            'authors' => [$this->faker->name(), $this->faker->name()],
+            'publisher' => $this->faker->company(),
+            'publish_date' => LocalDate::parse($this->faker->date()),
         ];
     }
 }

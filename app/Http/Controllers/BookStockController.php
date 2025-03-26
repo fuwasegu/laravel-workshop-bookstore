@@ -12,6 +12,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
+use Throwable;
 
 class BookStockController
 {
@@ -31,7 +32,7 @@ class BookStockController
 
     /**
      * @throws ValidationException
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function adjustStock(Book $book, Request $request): Response
     {

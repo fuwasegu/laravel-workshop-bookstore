@@ -19,6 +19,7 @@ use Carbon\CarbonImmutable;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|BookStock newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|BookStock newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|BookStock query()
+ * @method static \Database\Factories\BookStockFactory                    factory($count = null, $state = [])
  *
  * @mixin \Eloquent
  */

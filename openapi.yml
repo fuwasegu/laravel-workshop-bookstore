@@ -36,12 +36,9 @@ paths:
             schema:
               type: object
               properties:
-                title:
-                  type: string
                 isbn:
                   type: string
               required:
-                - title
                 - isbn
       responses:
         '201':
@@ -80,12 +77,9 @@ paths:
             schema:
               type: object
               properties:
-                title:
-                  type: string
                 isbn:
                   type: string
               required:
-                - title
                 - isbn
       responses:
         '200':
@@ -176,12 +170,26 @@ components:
         updated_at:
           type: string
           format: date-time
+        publisher:
+          type: string
+          nullable: true
+        publish_date:
+          type: string
+          format: date
+          nullable: true
+        authors:
+          type: array
+          items:
+            type: string
       required:
         - id
         - title
         - isbn
         - created_at
         - updated_at
+        - publisher
+        - publish_date
+        - authors
     BookStock:
       type: object
       properties:

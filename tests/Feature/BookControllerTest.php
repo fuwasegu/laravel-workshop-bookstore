@@ -39,29 +39,8 @@ class BookControllerTest extends TestCase
                         ->whereType('isbn', 'string')
                         ->whereType('created_at', 'string')
                         ->whereType('updated_at', 'string')
+                        ->etc()
                 )
-        );
-    }
-
-    #[Test]
-    public function 新規作成できる(): void
-    {
-        Carbon::setTestNow('2024-01-01T00:00:00');
-        $this->assertDatabaseEmpty(Book::class);
-
-        $response = $this->post('/api/books', [
-            'title' => 'テスト本',
-            'isbn' => 'xxx-xxx-xxx-xxx',
-        ]);
-
-        $response->assertStatus(201);
-        $response->assertJson(
-            fn (AssertableJson $json) => $json
-                ->whereType('id', 'integer')
-                ->where('title', 'テスト本')
-                ->where('isbn', 'xxx-xxx-xxx-xxx')
-                ->where('created_at', '2024-01-01T00:00:00.000000Z')
-                ->where('updated_at', '2024-01-01T00:00:00.000000Z')
         );
     }
 
@@ -83,6 +62,7 @@ class BookControllerTest extends TestCase
                 ->where('isbn', $book->isbn)
                 ->where('created_at', $book->created_at?->toJSON())
                 ->where('updated_at', $book->updated_at?->toJSON())
+                ->etc()
         );
     }
 

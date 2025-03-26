@@ -42,6 +42,8 @@ return [
             'busy_timeout' => null,
             'journal_mode' => null,
             'synchronous' => null,
+            'use_native_json' => true,
+            'use_native_jsonb' => true,
         ],
 
         'mysql' => [

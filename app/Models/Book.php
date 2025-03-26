@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Casts\LocalDate;
+use Brick\DateTime\LocalDate as BrickLocalDate;
 use Database\Factories\BookFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -18,10 +20,14 @@ use Illuminate\Database\Eloquent\Collection;
  * @property null|CarbonImmutable       $created_at
  * @property null|CarbonImmutable       $updated_at
  * @property Collection<int, BookStock> $stocks
+ * @property null|string                $publisher
+ * @property null|BrickLocalDate        $publish_date
+ * @property array                      $authors
  *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Book newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Book newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Book query()
+ * @method static \Database\Factories\BookFactory                    factory($count = null, $state = [])
  *
  * @mixin \Eloquent
  */
@@ -33,6 +39,9 @@ class Book extends Model
     protected $fillable = [
         'title',
         'isbn',
+        'publisher',
+        'publish_date',
+        'authors',
     ];
 
     protected $casts = [
@@ -41,6 +50,9 @@ class Book extends Model
         'isbn' => 'string',
         'created_at' => 'immutable_datetime',
         'updated_at' => 'immutable_datetime',
+        'publisher' => 'string',
+        'publish_date' => LocalDate::class,
+        'authors' => 'json:unicode',
     ];
 
     /**

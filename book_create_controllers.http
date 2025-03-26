@@ -1,0 +1,31 @@
+// TECHNICAL MASTER はじめてのPHP エンジニア入門編
+POST http://localhost:8000/api/books/create-a
+Content-Type: application/json
+
+{
+    "isbn": "9784798073224"
+}
+###
+
+POST http://localhost:8000/api/books/create-b
+Content-Type: application/json
+
+{
+  "isbn": "9784798073224"
+}
+###
+
+POST http://localhost:8000/api/books/create-c
+Content-Type: application/json
+
+{
+    "isbn": "9784798073224"
+}
+###
+
+POST http://localhost:8000/api/books/create-d
+Content-Type: application/json
+
+{
+    "isbn": "9784798073224"
+}

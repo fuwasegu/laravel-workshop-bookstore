@@ -1,0 +1,43 @@
+services:
+  mysql:
+    image: mysql:8
+    environment:
+      MYSQL_DATABASE: "${DB_DATABASE:-bookstore}"
+      MYSQL_USER: "${DB_USERNAME:-user}"
+      MYSQL_PASSWORD: "${DB_PASSWORD:-p@ssw0rd}"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD:-p@ssw0rd}"
+      TZ: "Asia/Tokyo"
+      LANG: "ja_JP.UTF-8"
+      LANGUAGE: "ja_JP:ja"
+    volumes:
+      - "./mysql/initdb.d:/docker-entrypoint-initdb.d:ro,cached"
+      - "mysql-data:/var/lib/mysql:delegated"
+    ports:
+      - "127.0.0.1:${EXTERNAL_PORT_MYSQL:-3306}:3306/tcp"
+    healthcheck:
+      test:
+        ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-u", "user", "-pp@ssw0rd"]
+      start_period: 0s
+      interval: 1s
+      timeout: 1s
+      retries: 30
+  app:
+    build: .
+    environment:
+      DB_HOST: "mysql"
+      DB_PORT: "3306"
+      DB_DATABASE: "${DB_DATABASE:-bookstore}"
+      DB_USERNAME: "${DB_USERNAME:-user}"
+      DB_PASSWORD: "${DB_PASSWORD:-p@ssw0rd}"
+      TZ: "Asia/Tokyo"
+      APP_KEY: "${APP_KEY:-abcdefghijklmnopqrstuvwxyz012345}"
+    ports:
+      - "127.0.0.1:8000:80/tcp"
+    volumes:
+      - .:/app
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+volumes:
+  mysql-data:

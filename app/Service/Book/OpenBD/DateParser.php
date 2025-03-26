@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Service\Book\OpenDB;
+namespace App\Service\Book\OpenBD;
 
 use Brick\DateTime\DateTimeException;
 use Brick\DateTime\LocalDate;

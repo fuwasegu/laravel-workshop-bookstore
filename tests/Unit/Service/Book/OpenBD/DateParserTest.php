@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Service\Book\OpenDB;
+namespace Tests\Unit\Service\Book\OpenBD;
 
-use App\Service\Book\OpenDB\DateParser;
+use App\Service\Book\OpenBD\DateParser;
 use Brick\DateTime\LocalDate;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;

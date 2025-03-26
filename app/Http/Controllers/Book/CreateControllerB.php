@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Book;
 
 use App\Models\Book;
-use App\Service\Book\OpenDB\DateParser;
+use App\Service\Book\OpenBD\DateParser;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Exceptions\HttpResponseException;

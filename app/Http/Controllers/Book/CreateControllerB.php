@@ -20,13 +20,6 @@ use Illuminate\Validation\ValidationException;
  */
 class CreateControllerB
 {
-    private Client $client;
-
-    public function __construct(Client $client)
-    {
-        $this->client = $client;
-    }
-
     /**
      * @throws ValidationException
      * @throws GuzzleException
@@ -41,7 +34,8 @@ class CreateControllerB
 
         // HTTP リクエストを送信して JSON を得る
         $url = 'https://api.openbd.jp/v1/get?'.http_build_query(['isbn' => $request->string('isbn')->value()]);
-        $response = $this->client
+        $client = new Client();
+        $response = $client
             ->get($url)
             ->getBody()
             ->getContents();

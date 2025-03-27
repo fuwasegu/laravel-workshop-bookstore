@@ -6,11 +6,12 @@ namespace App\Service\Book\OpenBD;
 
 use App\Service\Book\BookDetail;
 use App\Service\Book\BookServiceException;
+use App\Service\Book\Contract\Fetcher as FetcherContract;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Collection;
 
-class Fetcher
+class Fetcher implements FetcherContract
 {
     public const string BASE_URL = 'https://api.openbd.jp/v1/get';
 

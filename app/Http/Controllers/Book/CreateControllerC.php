@@ -18,11 +18,11 @@ use Illuminate\Validation\ValidationException;
 /**
  * Http Facade の基底クラスを DI するパターン.
  */
-class CreateControllerC
+readonly class CreateControllerC
 {
     public function __construct(
-        private readonly Factory $client,
-        private readonly DateParser $parser,
+        private Factory $client,
+        private DateParser $parser,
     ) {}
 
     /**

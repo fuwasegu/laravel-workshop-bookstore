@@ -18,11 +18,11 @@ use Illuminate\Validation\ValidationException;
 /**
  * Guzzle を DI するパターン.
  */
-class CreateControllerD
+readonly class CreateControllerD
 {
     public function __construct(
-        private readonly Client $client,
-        private readonly DateParser $parser,
+        private Client $client,
+        private DateParser $parser,
     ) {}
 
     /**

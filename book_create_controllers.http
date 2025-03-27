@@ -37,3 +37,11 @@ Content-Type: application/json
 {
     "isbn": "9784798073224"
 }
+###
+
+POST http://localhost:8000/api/books/create-f
+Content-Type: application/json
+
+{
+    "isbn": "9784798073224"
+}

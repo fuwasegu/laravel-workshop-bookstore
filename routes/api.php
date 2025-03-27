@@ -7,6 +7,7 @@ use App\Http\Controllers\Book\CreateControllerB;
 use App\Http\Controllers\Book\CreateControllerC;
 use App\Http\Controllers\Book\CreateControllerD;
 use App\Http\Controllers\Book\CreateControllerE;
+use App\Http\Controllers\Book\CreateControllerF;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookStockController;
 
@@ -28,3 +29,4 @@ Route::post('/books/create-b', CreateControllerB::class);
 Route::post('/books/create-c', CreateControllerC::class);
 Route::post('/books/create-d', CreateControllerD::class);
 Route::post('/books/create-e', CreateControllerE::class);
+Route::post('/books/create-f', CreateControllerF::class);
